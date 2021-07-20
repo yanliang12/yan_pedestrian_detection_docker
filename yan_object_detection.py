@@ -59,7 +59,6 @@ def object_detection_from_image(
     detections1 = rescale_boxes(detections, img_size, image_original.size)
     for detection in detections1:
         x1, y1, x2, y2, conf, cls_conf, cls_pred = detection
-        print(detection)
         x1 = int(x1)
         y1 = int(y1)
         x2 = int(x2)
