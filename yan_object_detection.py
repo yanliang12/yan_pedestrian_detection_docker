@@ -42,13 +42,12 @@ model, classes = load_yolo_model()
 
 #######
 
-
 def object_detection_from_image(
     input_image_path, 
     ):
     ouput = []
-    image = Image.open(input_image_path)
-    image = image.resize((img_size,img_size), Image.ANTIALIAS)
+    image_original = Image.open(input_image_path)
+    image = image_original.resize((img_size,img_size), Image.ANTIALIAS)
     image = np.array(image)
     image = TF.to_tensor(image)
     ###
@@ -57,9 +56,10 @@ def object_detection_from_image(
     ###
     detections = model(input_imgs)
     detections = non_max_suppression(detections, 0.8, 0.4)[0]
-    detections1 = rescale_boxes(detections, img_size, input_imgs.shape[:2])
+    detections1 = rescale_boxes(detections, img_size, image_original.size)
     for detection in detections1:
         x1, y1, x2, y2, conf, cls_conf, cls_pred = detection
+        print(detection)
         x1 = int(x1)
         y1 = int(y1)
         x2 = int(x2)
