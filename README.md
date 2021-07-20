@@ -14,4 +14,8 @@ output_detections = yan_object_detection.object_detection_from_image(
 
 for d in output_detections:
 	print(d)
+
+'''
+{'x1': 237, 'x2': 290, 'y1': 803, 'y2': 1041, 'label': 'person', 'score': 0.9997958540916443}
+'''
 ```
