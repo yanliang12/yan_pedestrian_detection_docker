@@ -23,7 +23,6 @@ import torchvision.transforms.functional as TF
 
 Tensor = torch.cuda.FloatTensor if torch.cuda.is_available() else torch.FloatTensor
 
-
 img_size = 416
 
 #######
